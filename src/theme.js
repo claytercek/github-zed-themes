@@ -68,7 +68,138 @@ export function getTheme({ themeKey, name, type }) {
       "ghost_element.disabled": tokens['bgColor/disabled'],
       "ghost_element.hover": tokens['bgColor/defay'],
       "ghost_element.selected": tokens['bgColor/neutral-muted'],
-      
+
+      "hint": tokens['fgColor/muted'],
+      "hint.background": tokens['bgColor/muted'],
+      "hint.border": tokens['borderColor/muted'],
+
+      "icon": tokens['fgColor/default'],
+      "icon.background": tokens['bgColor/default'],
+      "icon.border": tokens['borderColor/default'],
+      "icon.accent": tokens['fgColor/accent'],
+      "icon.muted": tokens['fgColor/muted'],
+      "icon.disabled": tokens['fgColor/disabled'],
+      "icon.placeholder": tokens['fgColor/fgColor/placeholder'],
+
+      "ignored": tokens['fgColor/disabled'],
+      "ignored.background": tokens['bgColor/disabled'],
+      "ignored.border": tokens['borderColor/disabled'],
+
+      "info": tokens['fgColor/default'],
+      "info.background": tokens['bgColor/default'],
+      "info.border": tokens['borderColor/default'],
+
+      "link_text.hover": tokens['fgColor/link'],
+
+      "modified": tokens['fgColor/attention'],
+      "modified.background": tokens['bgColor/attention-emphasis'],
+      "modified.border": tokens['borderColor/attention-emphasis'],
+
+      "pane.focused_border": tokens['borderColor/default'],
+      "panel.background": tokens['bgColor/inset'],
+      "panel.focused_border": tokens['borderColor/default'],
+
+      "predictive": tokens['fgColor/placeholder'],
+      "predictive.background": tokens['bgColor/neutral-muted'],
+      "predictive.border": tokens['borderColor/neutral-muted'],
+
+      "renamed": tokens['fgColor/success'],
+      "renamed.background": tokens['bgColor/success-emphasis'],
+      "renamed.border": tokens['borderColor/success-emphasis'],
+
+      "scrollbar.thumb.border": tokens['borderColor/transparent'],
+      "scrollbar.thumb.hover_background": tokens['bgColor/muted'],
+      "scrollbar.track.background": tokens['bgColor/transparent'],
+      "scrollbar.track.border": tokens['borderColor/transparent'],
+      "scrollbar_thumb.background": tokens['bgColor/neutal-muted'],
+
+      "search.match_background": tokens['bgColor/attention-muted'],
+
+      "status_bar.background": tokens['bgColor/inset'],
+
+      "success": tokens['fgColor/success'],
+      "success.background": tokens['bgColor/success-emphasis'],
+      "success.border": tokens['borderColor/success-emphasis'],
+
+      "surface.background": tokens['bgColor/inset'],
+
+      "tab.active_background": tokens['bgColor/default'],
+      "tab.inactive_background": tokens['bgColor/inset'],
+      "tab_bar.background": tokens['bgColor/inset'],
+
+      "terminal.ansi.black": tokens['color/ansi/black'],
+      "terminal.ansi.bright_black": tokens['color/ansi/black-bright'],
+      "terminal.ansi.dim_black": tokens['color/ansi/black'],
+      "terminal.ansi.blue": tokens['color/ansi/blue'],
+      "terminal.ansi.bright_blue": tokens['color/ansi/blue-bright'],
+      "terminal.ansi.dim_blue": tokens['color/ansi/blue'],
+      "terminal.ansi.cyan": tokens['color/ansi/cyan'],
+      "terminal.ansi.bright_cyan": tokens['color/ansi/cyan-bright'],
+      "terminal.ansi.dim_cyan": tokens['color/ansi/cyan'],
+      "terminal.ansi.green": tokens['color/ansi/green'],
+      "terminal.ansi.bright_green": tokens['color/ansi/green-bright'],
+      "terminal.ansi.dim_green": tokens['color/ansi/green'],
+      "terminal.ansi.magenta": tokens['color/ansi/magenta'],
+      "terminal.ansi.bright_magenta": tokens['color/ansi/magenta-bright'],
+      "terminal.ansi.dim_magenta": tokens['color/ansi/magenta'],
+      "terminal.ansi.red": tokens['color/ansi/red'],
+      "terminal.ansi.bright_red": tokens['color/ansi/red-bright'],
+      "terminal.ansi.dim_red": tokens['color/ansi/red'],
+      "terminal.ansi.white": tokens['color/ansi/white'],
+      "terminal.ansi.bright_white": tokens['color/ansi/white-bright'],
+      "terminal.ansi.dim_white": tokens['color/ansi/white'],
+      "terminal.ansi.yellow": tokens['color/ansi/yellow'],
+      "terminal.ansi.bright_yellow": tokens['color/ansi/yellow-bright'],
+      "terminal.ansi.dim_yellow": tokens['color/ansi/yellow'],
+
+      "terminal.background": tokens['bgColor/inset'],
+      "terminal.bright_foreground": tokens['fgColor/onEmphasis'],
+      "terminal.dim_foreground": tokens['fgColor/default'],
+      "terminal.foreground": tokens['fgColor/muted'],
+
+      "text": tokens['fgColor/default'],
+      "text.accent": tokens['fgColor/accent'],
+      "text.disabled": tokens['fgColor/disabled'],
+      "text.muted": tokens['fgColor/muted'],
+      "text.placeholder": tokens['fgColor/placeholder'],
+
+      "title_bar.background": tokens['bgColor/inset'],
+      "toolbar.background": tokens['bgColor/inset'],
+
+      "unreachable": tokens['fgColor/disabled'],
+      "unreachable.background": tokens['bgColor/disabled'],
+      "unreachable.border": tokens['borderColor/disabled'],
+
+      "warning": tokens['fgColor/warning'],
+      "warning.background": tokens['bgColor/warning-emphasis'],
+      "warning.border": tokens['borderColor/warning-emphasis'],
+
+      "players":
+        [
+          "blue",
+          "orange",
+          "pink",
+          "green",
+          "purple",
+          "yellow",
+          "teal",
+          "red"
+        ].map(color => ({
+          "cursor": tokens[`data/${color}/color`],
+          "background": tokens[`data/${color}/color/muted`],
+          "border": tokens[`data/${color}/color/muted`]
+        })),
+
+      "syntax": {
+        "attribute": {
+          "color": tokens['fgColor/default']
+        },
+        "boolean": {
+          "color": tokens['fgColor/accent']
+        }
+      }
     }
   }
 }
+
+const test = false;
