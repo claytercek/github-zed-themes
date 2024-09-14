@@ -1,7 +1,7 @@
-id = "github-zed-theme"
-name = "Github Theme"
+id = "github-zed-themes"
+name = "Github Themes"
 version = "0.0.1"
 schema_version = 1
 authors = ["Clay Tercek"]
-description = "Github Themes for Zed"
+description = "Github Themes for Zed, generated from Primer's Primitives"
 repository = "https://github.com/claytercek/github-zed-theme"

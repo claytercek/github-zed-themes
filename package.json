@@ -1,14 +1,11 @@
 {
-  "name": "github-zed-theme",
+  "name": "github-zed-theme-generator",
   "version": "0.0.1",
-  "main": "index.js",
-  "type": "module",
+  "private": true,
   "scripts": {
-    "dev": "node --watch src/generate"
+    "dev": "node --watch src/generate",
+    "build": "node src/generate"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@primer/primitives": "^9.1.1",
     "@types/node": "^20.14.6",
