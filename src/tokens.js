@@ -9,6 +9,12 @@ import darkHighContrastColors from "@primer/primitives/dist/figma/themes/dark-hi
 import darkTritanopiaColors from "@primer/primitives/dist/figma/themes/dark-tritanopia.json" with { type: 'json' }
 import darkDimmedColors from "@primer/primitives/dist/figma/themes/dark-dimmed.json" with { type: 'json' }
 
+import lightScale from "@primer/primitives/dist/figma/scales/light.json" with { type: 'json' }
+import lightHightContrastScale from "@primer/primitives/dist/figma/scales/light-high-constrast.json" with { type: 'json' }
+import darkScale from "@primer/primitives/dist/figma/scales/dark.json" with { type: 'json' }
+import darkHighContrastScale from "@primer/primitives/dist/figma/scales/dark-high-constrast.json" with { type: 'json' }
+import darkDimmedScale from "@primer/primitives/dist/figma/scales/dark-dimmed.json" with { type: 'json' }
+
 const themes = {
   'light': lightColors,
   'light_colorblind': lightColorblindColors,
@@ -25,6 +31,22 @@ const themes = {
  * @typedef {keyof typeof themes} ThemeKey
  */
 
+const scales = {
+  'light': lightScale,
+  'light_high_contrast': lightHightContrastScale,
+  'dark': darkScale,
+  'dark_high_contrast': darkHighContrastScale,
+  'dark_dimmed': darkDimmedScale,
+
+  // TODO: figure out what to do for these...
+  // At the moment, primer doesn't have colorblind or tritanopia scales, 
+  // only functional color tokens (generated in the themes above)
+  'light_colorblind': lightScale,
+  'light_tritanopia': lightScale,
+  'dark_tritanopia': darkScale,
+  'dark_colorblind': darkScale,
+};
+
 
 /**
  * Convert an rgba color to a hex color.
@@ -38,8 +60,30 @@ function rgbaToHexA(r, g, b, a) {
 }
 
 /**
+ * @typedef ColorToken
+ * @property {string} name
+ * @property {"COLOR"} type
+ * @property {object} value
+ * @property {number} value.r
+ * @property {number} value.g
+ * @property {number} value.b
+ * @property {number} value.a
+ */
+
+/**
+ * @typedef FloatToken
+ * @property {string} name
+ * @property {"FLOAT"} type
+ * @property {number} value
+ */
+
+/**
+ * @typedef {ColorToken | FloatToken} Token
+ */
+
+/**
  * Remap the theme to a format that is easier to use in the code.
- * @param {typeof lightColors} theme
+ * @param {Token[]} theme
  */
 function remapTheme(theme) {
   // imported themes are in the format with { type: 'json' }
@@ -53,14 +97,14 @@ function remapTheme(theme) {
   // }
 
   return theme.reduce(
-    (/** @type Record<string, string> */ acc, token) => {
+    (acc, token) => {
       if (token.type !== 'COLOR' || !token.value) return acc;
       const { name, value } = token;
       const color = rgbaToHexA(value.r, value.g, value.b, value.a);
       acc[name] = color;
       return acc;
     },
-    {}
+    /** @type Record<string, string> */({})
   );
 }
 
@@ -68,5 +112,7 @@ function remapTheme(theme) {
  * @param {ThemeKey} theme
  */
 export function getColorTokens(theme) {
-  return remapTheme(themes[theme]);
+  console.log(remapTheme(scales[theme]))
+  return { ...remapTheme(scales[theme]), ...remapTheme(themes[theme]) };
 }
+

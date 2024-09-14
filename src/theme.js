@@ -10,6 +10,14 @@ import { getColorTokens } from "./tokens.js";
 export function getTheme({ themeKey, name, type }) {
   const tokens = getColorTokens(themeKey)
 
+  /**
+   * @param {string} lightTokenName
+   * @param {string} darkTokenName
+   */
+  const lightDark = (lightTokenName, darkTokenName) => {
+    return themeKey.startsWith('light') ? tokens[lightTokenName] : tokens[darkTokenName]
+  }
+
   return {
     "$schema": "https://zed.dev/schema/themes/v0.1.0.json",
     appearance: type,
@@ -25,49 +33,49 @@ export function getTheme({ themeKey, name, type }) {
       "border.variant": tokens['borderColor/muted'],
 
       "conflict": tokens['fgColor/severe'],
-      "conflict.background": tokens['bgColor/severe-emphasis'],
-      "conflict.border": tokens['borderColor/severe-emphasis'],
+      "conflict.background": tokens['bgColor/severe-muted'],
+      "conflict.border": tokens['borderColor/severe-muted'],
 
       "created": tokens['fgColor/success'],
-      "created.background": tokens['bgColor/success-emphasis'],
-      "created.border": tokens['borderColor/success-emphasis'],
+      "created.background": tokens['bgColor/success-muted'],
+      "created.border": tokens['borderColor/success-muted'],
 
       "deleted": tokens['fgColor/danger'],
-      "deleted.background": tokens['bgColor/danger-emphasis'],
-      "deleted.border": tokens['borderColor/danger-emphasis'],
+      "deleted.background": tokens['bgColor/danger-muted'],
+      "deleted.border": tokens['borderColor/danger-muted'],
 
       "drop_target.background": tokens['bgColor/accent-muted'],
 
       "editor.active_line.background": tokens['bgColor/muted'],
-      "editor.active_line_number": tokens['fgColor/muted'],
+      "editor.active_line_number": tokens['fgColor/default'],
       "editor.active_wrap_guide": tokens['borderColor/muted'],
       "editor.background": tokens['bgColor/default'],
-      "editor.document_highlight.read_background": tokens['bgColor/neutral-muted'],
-      "editor.document_highlight.write_background": tokens['bgColor/neutral-emphasis'],
+      "editor.document_highlight.read_background": tokens['bgColor/accent-muted'],
+      "editor.document_highlight.write_background": tokens['bgColor/accent-emphasis'],
       "editor.foreground": tokens['fgColor/default'],
       "editor.gutter.background": tokens['bgColor/default'],
-      "editor.highlighted_line.background": tokens['bgColor/accent-muted'],
+      "editor.highlighted_line.background": tokens['bgColor/neutral-muted'],
       "editor.invisible": tokens['fgColor/disabled'],
       "editor.line_number": tokens['fgColor/muted'],
       "editor.subheader.background": tokens['bgColor/muted'],
       "editor.wrap_guide": tokens['borderColor/muted'],
 
-      "element.active": tokens['bgColor/accent-emphasis'],
-      "element.background": tokens['bgColor/accent-muted'],
+      "element.active": tokens['bgColor/neutral-muted'],
+      "element.background": tokens['bgColor/neutral-muted'],
       "element.disabled": tokens['bgColor/disabled'],
-      "element.hover": tokens['bgColor/accent-emphasis'],
-      "element.selected": tokens['bgColor/accent-muted'],
+      "element.hover": tokens['bgColor/neutral-muted'],
+      "element.selected": tokens['bgColor/neutral-muted'],
 
       "elevated_surface.background": tokens['bgColor/muted'],
 
       "error": tokens['fgColor/danger'],
-      "error.background": tokens['bgColor/danger-emphasis'],
-      "error.border": tokens['borderColor/danger-emphasis'],
+      "error.background": tokens['bgColor/muted'],
+      "error.border": tokens['borderColor/muted'],
 
       "ghost_element.active": tokens['bgColor/neutral-muted'],
       "ghost_element.background": tokens['bgColor/transparent'],
       "ghost_element.disabled": tokens['bgColor/disabled'],
-      "ghost_element.hover": tokens['bgColor/defay'],
+      "ghost_element.hover": tokens['bgColor/default'],
       "ghost_element.selected": tokens['bgColor/neutral-muted'],
 
       "hint": tokens['fgColor/muted'],
@@ -86,15 +94,15 @@ export function getTheme({ themeKey, name, type }) {
       "ignored.background": tokens['bgColor/disabled'],
       "ignored.border": tokens['borderColor/disabled'],
 
-      "info": tokens['fgColor/default'],
-      "info.background": tokens['bgColor/default'],
-      "info.border": tokens['borderColor/default'],
+      "info": tokens['fgColor/attention'],
+      "info.background": tokens['bgColor/muted'],
+      "info.border": tokens['borderColor/muted'],
 
       "link_text.hover": tokens['fgColor/link'],
 
       "modified": tokens['fgColor/attention'],
-      "modified.background": tokens['bgColor/attention-emphasis'],
-      "modified.border": tokens['borderColor/attention-emphasis'],
+      "modified.background": tokens['bgColor/attention-muted'],
+      "modified.border": tokens['borderColor/attention-muted'],
 
       "pane.focused_border": tokens['borderColor/default'],
       "panel.background": tokens['bgColor/inset'],
@@ -105,8 +113,8 @@ export function getTheme({ themeKey, name, type }) {
       "predictive.border": tokens['borderColor/neutral-muted'],
 
       "renamed": tokens['fgColor/success'],
-      "renamed.background": tokens['bgColor/success-emphasis'],
-      "renamed.border": tokens['borderColor/success-emphasis'],
+      "renamed.background": tokens['bgColor/success-muted'],
+      "renamed.border": tokens['borderColor/success-muted'],
 
       "scrollbar.thumb.border": tokens['borderColor/transparent'],
       "scrollbar.thumb.hover_background": tokens['bgColor/muted'],
@@ -119,8 +127,8 @@ export function getTheme({ themeKey, name, type }) {
       "status_bar.background": tokens['bgColor/inset'],
 
       "success": tokens['fgColor/success'],
-      "success.background": tokens['bgColor/success-emphasis'],
-      "success.border": tokens['borderColor/success-emphasis'],
+      "success.background": tokens['bgColor/success-muted'],
+      "success.border": tokens['borderColor/success-muted'],
 
       "surface.background": tokens['bgColor/inset'],
 
@@ -171,9 +179,9 @@ export function getTheme({ themeKey, name, type }) {
       "unreachable.background": tokens['bgColor/disabled'],
       "unreachable.border": tokens['borderColor/disabled'],
 
-      "warning": tokens['fgColor/warning'],
-      "warning.background": tokens['bgColor/warning-emphasis'],
-      "warning.border": tokens['borderColor/warning-emphasis'],
+      "warning": tokens['fgColor/attention'],
+      "warning.background": tokens['bgColor/muted'],
+      "warning.border": tokens['borderColor/muted'],
 
       "players":
         [
@@ -193,116 +201,211 @@ export function getTheme({ themeKey, name, type }) {
 
       "syntax": {
         "attribute": {
-          "color": tokens['color/prettylights/syntax/variable']
+          "color": null,
+          "font_style": null,
+          "font_weight": null
         },
         "boolean": {
-          "color": tokens['color/prettylights/syntax/constant']
+          "color": lightDark("base/color/blue/6", "base/color/blue/2"),
+          "font_style": null,
+          "font_weight": null
         },
         "comment": {
-          "color": tokens['color/prettylights/syntax/comment']
+          "color": tokens["base/color/neutral/9"],
+          "font_style": null,
+          "font_weight": null
         },
         "comment.doc": {
-          "color": tokens['color/prettylights/syntax/comment']
+          "color": tokens["base/color/neutral/9"],
+          "font_style": null,
+          "font_weight": null
         },
         "constant": {
-          "color": tokens['color/prettylights/syntax/constant']
+          "color": lightDark("base/color/blue/6", "base/color/blue/2"),
+          "font_style": null,
+          "font_weight": null
         },
         "constructor": {
-          "color": tokens['color/prettylights/syntax/entity-tag']
+          "color": lightDark("base/color/orange/6", "base/color/orange/2"),
+          "font_style": null,
+          "font_weight": null
         },
         "embedded": {
-          "color": null
+          "color": lightDark("base/color/red/5", "base/color/red/3"),
+          "font_style": null,
+          "font_weight": null
         },
         "emphasis": {
-          "color": tokens['color/prettylights/syntax/markup/italic']
+          "color": null,
+          "font_style": "italic",
+          "font_weight": null
         },
-        "emphasis.stong": {
-          "color": tokens['color/prettylights/syntax/markup/bold'],
+        "emphasis.strong": {
+          "color": null,
+          "font_style": null,
           "font_weight": 700
         },
         "enum": {
-          "color": tokens['color/prettylights/syntax/constant']
+          "color": lightDark("base/color/orange/6", "base/color/orange/2"),
+          "font_style": null,
+          "font_weight": null
         },
         "function": {
-          "color": tokens['color/prettylights/syntax/entity']
+          "color": lightDark("base/color/purple/5", "base/color/purple/2"),
+          "font_style": null,
+          "font_weight": null
+        },
+        "function.method": {
+          "color": lightDark("base/color/purple/5", "base/color/purple/2"),
+          "font_style": null,
+          "font_weight": null
+        },
+        "function.special.definition": {
+          "color": lightDark("base/color/purple/5", "base/color/purple/2"),
+          "font_style": null,
+          "font_weight": null
         },
         "hint": {
-          "color": tokens['mode/color/prettylights/syntax/string']
+          "color": "fgColor/muted",
+          "font_style": null,
+          "font_weight": 700
         },
         "keyword": {
-          "color": tokens['color/prettylights/syntax/keyword']
+          "color": lightDark("base/color/red/5", "base/color/red/3"),
+          "font_style": null,
+          "font_weight": null
         },
         "label": {
-          "color": tokens['color/prettylights/syntax/entity']
+          "color": lightDark("base/color/blue/6", "base/color/blue/2"),
+          "font_style": null,
+          "font_weight": null
         },
         "link_text": {
-          "color": tokens['color/prettylights/syntax/string']
+          "color": lightDark("base/color/blue/8", "base/color/blue/1"),
+          "font_style": "italic",
+          "font_weight": null
         },
         "link_uri": {
-          "color": tokens['color/prettylights/syntax/string']
+          "color": lightDark("base/color/blue/6", "base/color/blue/2"),
+          "font_style": null,
+          "font_weight": null
         },
         "number": {
-          "color": tokens['color/prettylights/syntax/constant']
+          "color": lightDark("base/color/blue/6", "base/color/blue/2"),
+          "font_style": null,
+          "font_weight": null
         },
         "operator": {
-          "color": tokens['color/prettylights/syntax/keyword']
+          "color": "fgColor/default",
+          "font_style": null,
+          "font_weight": null
         },
         "predictive": {
-          "color": tokens['color/prettylights/syntax/comment']
+          "color": "fgColor/placeholder",
+          "font_style": "italic",
+          "font_weight": null
         },
         "preproc": {
-          "color": null
+          "color": lightDark("base/color/red/5", "base/color/red/3"),
+          "font_style": null,
+          "font_weight": null
         },
         "primary": {
-          "color": null
+          "color": "fgColor/default",
+          "font_style": null,
+          "font_weight": null
         },
         "property": {
-          "color": tokens['color/prettylights/syntax/variable']
+          "color": lightDark("base/color/blue/6", "base/color/blue/2"),
+          "font_style": null,
+          "font_weight": null
         },
         "punctuation": {
-          "color": null
+          "color": "fgColor/default",
+          "font_style": null,
+          "font_weight": null
         },
         "punctuation.bracket": {
-          "color": null
+          "color": "fgColor/default",
+          "font_style": null,
+          "font_weight": null
         },
         "punctuation.delimiter": {
-          "color": null
+          "color": "fgColor/default",
+          "font_style": null,
+          "font_weight": null
         },
         "punctuation.list_marker": {
-          "color": null
+          "color": lightDark("base/color/orange/6", "base/color/orange/2"),
+          "font_style": null,
+          "font_weight": null
         },
         "punctuation.special": {
-          "color": null
+          "color": lightDark("base/color/red/5", "base/color/red/3"),
+          "font_style": null,
+          "font_weight": null
         },
         "string": {
-          "color": tokens['color/prettylights/syntax/string']
+          "color": lightDark("base/color/blue/8", "base/color/blue/1"),
+          "font_style": null,
+          "font_weight": null
         },
         "string.escape": {
-          "color": tokens['color/prettylights/syntax/string-regexp']
+          "color": lightDark("base/color/green/6", "base/color/green/1"),
+          "font_style": "bold",
+          "font_weight": null
         },
         "string.regex": {
-          "color": tokens['color/prettylights/syntax/string-regexp']
+          "color": lightDark("base/color/blue/8", "base/color/blue/1"),
+          "font_style": null,
+          "font_weight": null
         },
         "string.special": {
-          "color": tokens['color/prettylights/syntax/string-regexp']
+          "color": lightDark("base/color/blue/6", "base/color/blue/2"),
+          "font_style": null,
+          "font_weight": null
         },
         "string.special.symbol": {
-          "color": tokens['color/prettylights/syntax/string-regexp']
+          "color": lightDark("base/color/blue/6", "base/color/blue/2"),
+          "font_style": null,
+          "font_weight": null
         },
         "tag": {
-          "color": tokens['color/prettylights/syntax/entity-tag']
+          "color": lightDark("base/color/green/6", "base/color/green/1"),
+          "font_style": null,
+          "font_weight": null
         },
         "text.literal": {
-          "color": tokens['color/prettylights/syntax/string']
+          "color": lightDark("base/color/blue/6", "base/color/blue/2"),
+          "font_style": null,
+          "font_weight": null
         },
         "title": {
-          "color": null
+          "color": lightDark("base/color/blue/6", "base/color/blue/2"),
+          "font_style": null,
+          "font_weight": 700
         },
         "type": {
-          "color": tokens['color/prettylights/syntax/entity']
+          "color": lightDark("base/color/orange/6", "base/color/orange/2"),
+          "font_style": null,
+          "font_weight": null
         },
+        "variable": {
+          "color": lightDark("base/color/orange/6", "base/color/orange/2"),
+          "font_style": null,
+          "font_weight": null
+        },
+        "variable.special": {
+          "color": lightDark("base/color/red/5", "base/color/red/3"),
+          "font_style": null,
+          "font_weight": null
+        },
+        "variant": {
+          "color": lightDark("base/color/orange/6", "base/color/orange/2"),
+          "font_style": null,
+          "font_weight": null
+        }
       }
     }
   }
 }
-

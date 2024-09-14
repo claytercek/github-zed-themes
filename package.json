@@ -10,7 +10,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@primer/primitives": "^8.2.2",
+    "@primer/primitives": "^9.1.1",
     "@types/node": "^20.14.6",
     "typescript": "^5.4.5"
   }
