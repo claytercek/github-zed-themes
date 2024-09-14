@@ -11,6 +11,7 @@ export function getTheme({ themeKey, name, type }) {
   const tokens = getColorTokens(themeKey)
 
   return {
+    "$schema": "https://zed.dev/schema/themes/v0.1.0.json",
     appearance: type,
     name,
     style: {
@@ -27,9 +28,9 @@ export function getTheme({ themeKey, name, type }) {
       "conflict.background": tokens['bgColor/severe-emphasis'],
       "conflict.border": tokens['borderColor/severe-emphasis'],
 
-      "created": tokens['fgColor/accent'],
-      "created.background": tokens['bgColor/accent-emphasis'],
-      "created.border": tokens['borderColor/accent-emphasis'],
+      "created": tokens['fgColor/success'],
+      "created.background": tokens['bgColor/success-emphasis'],
+      "created.border": tokens['borderColor/success-emphasis'],
 
       "deleted": tokens['fgColor/danger'],
       "deleted.background": tokens['bgColor/danger-emphasis'],
@@ -164,7 +165,7 @@ export function getTheme({ themeKey, name, type }) {
       "text.placeholder": tokens['fgColor/placeholder'],
 
       "title_bar.background": tokens['bgColor/inset'],
-      "toolbar.background": tokens['bgColor/inset'],
+      "toolbar.background": tokens['bgColor/default'],
 
       "unreachable": tokens['fgColor/disabled'],
       "unreachable.background": tokens['bgColor/disabled'],
@@ -192,14 +193,116 @@ export function getTheme({ themeKey, name, type }) {
 
       "syntax": {
         "attribute": {
-          "color": tokens['fgColor/default']
+          "color": tokens['color/prettylights/syntax/variable']
         },
         "boolean": {
-          "color": tokens['fgColor/accent']
-        }
+          "color": tokens['color/prettylights/syntax/constant']
+        },
+        "comment": {
+          "color": tokens['color/prettylights/syntax/comment']
+        },
+        "comment.doc": {
+          "color": tokens['color/prettylights/syntax/comment']
+        },
+        "constant": {
+          "color": tokens['color/prettylights/syntax/constant']
+        },
+        "constructor": {
+          "color": tokens['color/prettylights/syntax/entity-tag']
+        },
+        "embedded": {
+          "color": null
+        },
+        "emphasis": {
+          "color": tokens['color/prettylights/syntax/markup/italic']
+        },
+        "emphasis.stong": {
+          "color": tokens['color/prettylights/syntax/markup/bold'],
+          "font_weight": 700
+        },
+        "enum": {
+          "color": tokens['color/prettylights/syntax/constant']
+        },
+        "function": {
+          "color": tokens['color/prettylights/syntax/entity']
+        },
+        "hint": {
+          "color": tokens['mode/color/prettylights/syntax/string']
+        },
+        "keyword": {
+          "color": tokens['color/prettylights/syntax/keyword']
+        },
+        "label": {
+          "color": tokens['color/prettylights/syntax/entity']
+        },
+        "link_text": {
+          "color": tokens['color/prettylights/syntax/string']
+        },
+        "link_uri": {
+          "color": tokens['color/prettylights/syntax/string']
+        },
+        "number": {
+          "color": tokens['color/prettylights/syntax/constant']
+        },
+        "operator": {
+          "color": tokens['color/prettylights/syntax/keyword']
+        },
+        "predictive": {
+          "color": tokens['color/prettylights/syntax/comment']
+        },
+        "preproc": {
+          "color": null
+        },
+        "primary": {
+          "color": null
+        },
+        "property": {
+          "color": tokens['color/prettylights/syntax/variable']
+        },
+        "punctuation": {
+          "color": null
+        },
+        "punctuation.bracket": {
+          "color": null
+        },
+        "punctuation.delimiter": {
+          "color": null
+        },
+        "punctuation.list_marker": {
+          "color": null
+        },
+        "punctuation.special": {
+          "color": null
+        },
+        "string": {
+          "color": tokens['color/prettylights/syntax/string']
+        },
+        "string.escape": {
+          "color": tokens['color/prettylights/syntax/string-regexp']
+        },
+        "string.regex": {
+          "color": tokens['color/prettylights/syntax/string-regexp']
+        },
+        "string.special": {
+          "color": tokens['color/prettylights/syntax/string-regexp']
+        },
+        "string.special.symbol": {
+          "color": tokens['color/prettylights/syntax/string-regexp']
+        },
+        "tag": {
+          "color": tokens['color/prettylights/syntax/entity-tag']
+        },
+        "text.literal": {
+          "color": tokens['color/prettylights/syntax/string']
+        },
+        "title": {
+          "color": null
+        },
+        "type": {
+          "color": tokens['color/prettylights/syntax/entity']
+        },
       }
     }
   }
 }
 
-const test = false;
